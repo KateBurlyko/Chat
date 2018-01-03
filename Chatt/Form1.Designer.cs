@@ -34,6 +34,8 @@
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.messageTextBox = new System.Windows.Forms.TextBox();
             this.chatTextBox = new System.Windows.Forms.TextBox();
+            this.port1 = new System.Windows.Forms.TextBox();
+            this.port2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // sendButton
@@ -68,9 +70,8 @@
             // userNameTextBox
             // 
             this.userNameTextBox.Location = new System.Drawing.Point(107, 12);
-            this.userNameTextBox.Multiline = true;
             this.userNameTextBox.Name = "userNameTextBox";
-            this.userNameTextBox.Size = new System.Drawing.Size(292, 30);
+            this.userNameTextBox.Size = new System.Drawing.Size(292, 20);
             this.userNameTextBox.TabIndex = 3;
             // 
             // messageTextBox
@@ -89,11 +90,27 @@
             this.chatTextBox.Size = new System.Drawing.Size(414, 357);
             this.chatTextBox.TabIndex = 5;
             // 
+            // port1
+            // 
+            this.port1.Location = new System.Drawing.Point(107, 44);
+            this.port1.Name = "port1";
+            this.port1.Size = new System.Drawing.Size(37, 20);
+            this.port1.TabIndex = 7;
+            // 
+            // port2
+            // 
+            this.port2.Location = new System.Drawing.Point(150, 44);
+            this.port2.Name = "port2";
+            this.port2.Size = new System.Drawing.Size(39, 20);
+            this.port2.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 511);
+            this.Controls.Add(this.port2);
+            this.Controls.Add(this.port1);
             this.Controls.Add(this.chatTextBox);
             this.Controls.Add(this.messageTextBox);
             this.Controls.Add(this.userNameTextBox);
@@ -115,6 +132,8 @@
         private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.TextBox messageTextBox;
         private System.Windows.Forms.TextBox chatTextBox;
+        private System.Windows.Forms.TextBox port1;
+        private System.Windows.Forms.TextBox port2;
     }
 }
 
