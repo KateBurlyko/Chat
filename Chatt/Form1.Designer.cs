@@ -33,7 +33,7 @@
             this.logoutButton = new System.Windows.Forms.Button();
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.messageTextBox = new System.Windows.Forms.TextBox();
-            this.ChatTextBox = new System.Windows.Forms.TextBox();
+            this.chatTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // sendButton
@@ -44,6 +44,7 @@
             this.sendButton.TabIndex = 0;
             this.sendButton.Text = "Send";
             this.sendButton.UseVisualStyleBackColor = true;
+            this.sendButton.Click += new System.EventHandler(this.sendButton_Click);
             // 
             // loginButton
             // 
@@ -53,15 +54,16 @@
             this.loginButton.TabIndex = 1;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // logoutButton
             // 
             this.logoutButton.Location = new System.Drawing.Point(421, 44);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(100, 26);
-            this.logoutButton.TabIndex = 2;
+            this.logoutButton.Size = new System.Drawing.Size(100, 23);
+            this.logoutButton.TabIndex = 6;
             this.logoutButton.Text = "Logout";
-            this.logoutButton.UseVisualStyleBackColor = true;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // userNameTextBox
             // 
@@ -79,21 +81,20 @@
             this.messageTextBox.Size = new System.Drawing.Size(381, 46);
             this.messageTextBox.TabIndex = 4;
             // 
-            // ChatTextBox
+            // chatTextBox
             // 
-            this.ChatTextBox.Enabled = false;
-            this.ChatTextBox.Location = new System.Drawing.Point(107, 73);
-            this.ChatTextBox.Multiline = true;
-            this.ChatTextBox.Name = "ChatTextBox";
-            this.ChatTextBox.Size = new System.Drawing.Size(414, 357);
-            this.ChatTextBox.TabIndex = 5;
+            this.chatTextBox.Location = new System.Drawing.Point(107, 73);
+            this.chatTextBox.Multiline = true;
+            this.chatTextBox.Name = "chatTextBox";
+            this.chatTextBox.Size = new System.Drawing.Size(414, 357);
+            this.chatTextBox.TabIndex = 5;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 511);
-            this.Controls.Add(this.ChatTextBox);
+            this.Controls.Add(this.chatTextBox);
             this.Controls.Add(this.messageTextBox);
             this.Controls.Add(this.userNameTextBox);
             this.Controls.Add(this.logoutButton);
@@ -113,7 +114,7 @@
         private System.Windows.Forms.Button logoutButton;
         private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.TextBox messageTextBox;
-        private System.Windows.Forms.TextBox ChatTextBox;
+        private System.Windows.Forms.TextBox chatTextBox;
     }
 }
 
