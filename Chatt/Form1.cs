@@ -20,19 +20,14 @@ namespace Chat
         IPAddress groupAddress;
 
         string userName;
-        
+
         public Form1()
         {
             //user = new Users();
             InitializeComponent();
             groupAddress = IPAddress.Parse(HOST);
 
-            loginButton.Enabled = true;
-            logoutButton.Enabled = false;
-            sendButton.Enabled = false;
-            messageTextBox.Enabled = false;
-            chatTextBox.ReadOnly = true;
-            listBox1.Enabled = false;
+            ControlsBeforeLogin();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
@@ -51,14 +46,11 @@ namespace Chat
                 string message = userName + " intered in chat";
                 byte[] data = Encoding.Unicode.GetBytes(message);
                 //user.addUser(userName);
-               // listBox1.DataSource = null;
+                // listBox1.DataSource = null;
                 //listBox1.DataSource = user.userN;
                 client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
 
-                loginButton.Enabled = false;
-                logoutButton.Enabled = true;
-                sendButton.Enabled = true;
-                messageTextBox.Enabled = true;
+                ControlsAfterLogin();
 
             }
             catch (Exception ex)
@@ -115,10 +107,7 @@ namespace Chat
         private void logoutButton_Click(object sender, EventArgs e)
         {
             ExitChat();
-            loginButton.Enabled = true;
-            logoutButton.Enabled = false;
-            sendButton.Enabled = false;
-            messageTextBox.Enabled = true;
+            ControlsBeforeLogin();
         }
 
         private void ExitChat()
@@ -127,17 +116,11 @@ namespace Chat
             byte[] data = Encoding.Unicode.GetBytes(message);
             client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
             client.DropMulticastGroup(groupAddress);
-           // user.deleteUser(userName);
-          //  listBox1.DataSource = null;
+            // user.deleteUser(userName);
+            //  listBox1.DataSource = null;
             //listBox1.DataSource = user.userN;
             alive = false;
             client.Close();
-
-            userNameTextBox.ReadOnly = false;
-            loginButton.Enabled = true;
-            logoutButton.Enabled = false;
-            sendButton.Enabled = false;
-
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
