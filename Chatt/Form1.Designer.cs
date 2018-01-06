@@ -1,7 +1,10 @@
-﻿namespace Chat
+﻿using System.Collections.ObjectModel;
+
+namespace Chat
 {
     partial class Form1
     {
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -34,13 +37,12 @@
             this.userNameTextBox = new System.Windows.Forms.TextBox();
             this.messageTextBox = new System.Windows.Forms.TextBox();
             this.chatTextBox = new System.Windows.Forms.TextBox();
-            this.port1 = new System.Windows.Forms.TextBox();
-            this.port2 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // sendButton
             // 
-            this.sendButton.Location = new System.Drawing.Point(420, 475);
+            this.sendButton.Location = new System.Drawing.Point(463, 453);
             this.sendButton.Name = "sendButton";
             this.sendButton.Size = new System.Drawing.Size(101, 24);
             this.sendButton.TabIndex = 0;
@@ -50,7 +52,7 @@
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(421, 12);
+            this.loginButton.Location = new System.Drawing.Point(463, 12);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(101, 26);
             this.loginButton.TabIndex = 1;
@@ -60,7 +62,7 @@
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(421, 44);
+            this.logoutButton.Location = new System.Drawing.Point(464, 44);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(100, 23);
             this.logoutButton.TabIndex = 6;
@@ -69,14 +71,14 @@
             // 
             // userNameTextBox
             // 
-            this.userNameTextBox.Location = new System.Drawing.Point(107, 12);
+            this.userNameTextBox.Location = new System.Drawing.Point(165, 12);
             this.userNameTextBox.Name = "userNameTextBox";
             this.userNameTextBox.Size = new System.Drawing.Size(292, 20);
             this.userNameTextBox.TabIndex = 3;
             // 
             // messageTextBox
             // 
-            this.messageTextBox.Location = new System.Drawing.Point(18, 453);
+            this.messageTextBox.Location = new System.Drawing.Point(56, 453);
             this.messageTextBox.Multiline = true;
             this.messageTextBox.Name = "messageTextBox";
             this.messageTextBox.Size = new System.Drawing.Size(381, 46);
@@ -84,33 +86,26 @@
             // 
             // chatTextBox
             // 
-            this.chatTextBox.Location = new System.Drawing.Point(107, 73);
+            this.chatTextBox.Location = new System.Drawing.Point(150, 70);
             this.chatTextBox.Multiline = true;
             this.chatTextBox.Name = "chatTextBox";
             this.chatTextBox.Size = new System.Drawing.Size(414, 357);
             this.chatTextBox.TabIndex = 5;
             // 
-            // port1
+            // listBox1
             // 
-            this.port1.Location = new System.Drawing.Point(107, 44);
-            this.port1.Name = "port1";
-            this.port1.Size = new System.Drawing.Size(37, 20);
-            this.port1.TabIndex = 7;
-            // 
-            // port2
-            // 
-            this.port2.Location = new System.Drawing.Point(150, 44);
-            this.port2.Name = "port2";
-            this.port2.Size = new System.Drawing.Size(39, 20);
-            this.port2.TabIndex = 8;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(12, 70);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(124, 277);
+            this.listBox1.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 511);
-            this.Controls.Add(this.port2);
-            this.Controls.Add(this.port1);
+            this.ClientSize = new System.Drawing.Size(584, 511);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.chatTextBox);
             this.Controls.Add(this.messageTextBox);
             this.Controls.Add(this.userNameTextBox);
@@ -132,8 +127,7 @@
         private System.Windows.Forms.TextBox userNameTextBox;
         private System.Windows.Forms.TextBox messageTextBox;
         private System.Windows.Forms.TextBox chatTextBox;
-        private System.Windows.Forms.TextBox port1;
-        private System.Windows.Forms.TextBox port2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

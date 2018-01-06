@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using Chatt;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -14,48 +10,56 @@ namespace Chat
 {
     public partial class Form1 : Form
     {
-        bool alive = false;
-        UdpClient client;
         const int TTL = 20;
         const string HOST = "235.166.1.4";
+        const int PORT = 8001;
+        const int PORT_FOR_MESSAGES = 8001;
+
+        bool alive = false;
+        UdpClient client;
         IPAddress groupAddress;
 
         string userName;
-        int _port1;
-        int _port2;
-
+        
         public Form1()
         {
+            //user = new Users();
             InitializeComponent();
+            groupAddress = IPAddress.Parse(HOST);
+
             loginButton.Enabled = true;
             logoutButton.Enabled = false;
             sendButton.Enabled = false;
+            messageTextBox.Enabled = false;
             chatTextBox.ReadOnly = true;
-
-            groupAddress = IPAddress.Parse(HOST);
+            listBox1.Enabled = false;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
             userName = userNameTextBox.Text;
             userNameTextBox.ReadOnly = true;
-            getPort1();
-            getPort2();
             try
             {
-                client = new UdpClient(_port1);
+                //creating of channel
+                client = new UdpClient(PORT);
                 client.JoinMulticastGroup(groupAddress, TTL);
 
                 Task receiveTask = new Task(ReceiveMessages);
                 receiveTask.Start();
 
-                string message = userName + " вошел в чат";
+                string message = userName + " intered in chat";
                 byte[] data = Encoding.Unicode.GetBytes(message);
-                client.Send(data, data.Length, HOST, _port2);
+                //user.addUser(userName);
+               // listBox1.DataSource = null;
+                //listBox1.DataSource = user.userN;
+                client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
 
                 loginButton.Enabled = false;
                 logoutButton.Enabled = true;
                 sendButton.Enabled = true;
+                messageTextBox.Enabled = true;
+
             }
             catch (Exception ex)
             {
@@ -99,7 +103,7 @@ namespace Chat
             {
                 string message = String.Format("{0}: {1}", userName, messageTextBox.Text);
                 byte[] data = Encoding.Unicode.GetBytes(message);
-                client.Send(data, data.Length, HOST, _port2);
+                client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
                 messageTextBox.Clear();
             }
             catch (Exception ex)
@@ -114,15 +118,18 @@ namespace Chat
             loginButton.Enabled = true;
             logoutButton.Enabled = false;
             sendButton.Enabled = false;
+            messageTextBox.Enabled = true;
         }
 
         private void ExitChat()
         {
-            string message = userName + " покидает чат";
+            string message = userName + " leved chat";
             byte[] data = Encoding.Unicode.GetBytes(message);
-            client.Send(data, data.Length, HOST, _port2);
+            client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
             client.DropMulticastGroup(groupAddress);
-
+           // user.deleteUser(userName);
+          //  listBox1.DataSource = null;
+            //listBox1.DataSource = user.userN;
             alive = false;
             client.Close();
 
@@ -130,16 +137,7 @@ namespace Chat
             loginButton.Enabled = true;
             logoutButton.Enabled = false;
             sendButton.Enabled = false;
-        }
 
-        private void getPort1()
-        {
-            _port1 = int.Parse(port1.Text);
-        }
-
-        private void getPort2()
-        {
-            _port2 = int.Parse(port2.Text);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
