@@ -10,11 +10,6 @@ namespace Chat
 {
     public partial class Form1 : Form
     {
-        const int TTL = 20;
-        const string HOST = "235.166.1.4";
-        const int PORT = 8001;
-        const int PORT_FOR_MESSAGES = 8001;
-
         bool alive = false;
         UdpClient client;
         IPAddress groupAddress;
@@ -25,7 +20,7 @@ namespace Chat
         {
             //user = new Users();
             InitializeComponent();
-            groupAddress = IPAddress.Parse(HOST);
+            groupAddress = IPAddress.Parse(DataForConnection.Default.HOST);
 
             ControlsBeforeLogin();
         }
@@ -37,8 +32,8 @@ namespace Chat
             try
             {
                 //creating of channel
-                client = new UdpClient(PORT);
-                client.JoinMulticastGroup(groupAddress, TTL);
+                client = new UdpClient(DataForConnection.Default.CONNECTION_PORT);
+                client.JoinMulticastGroup(groupAddress, DataForConnection.Default.TTL);
 
                 Task receiveTask = new Task(ReceiveMessages);
                 receiveTask.Start();
@@ -48,7 +43,7 @@ namespace Chat
                 //user.addUser(userName);
                 // listBox1.DataSource = null;
                 //listBox1.DataSource = user.userN;
-                client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
+                client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
 
                 ControlsAfterLogin();
 
@@ -95,7 +90,7 @@ namespace Chat
             {
                 string message = String.Format("{0}: {1}", userName, messageTextBox.Text);
                 byte[] data = Encoding.Unicode.GetBytes(message);
-                client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
+                client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
                 messageTextBox.Clear();
             }
             catch (Exception ex)
@@ -114,7 +109,7 @@ namespace Chat
         {
             string message = userName + " leved chat";
             byte[] data = Encoding.Unicode.GetBytes(message);
-            client.Send(data, data.Length, HOST, PORT_FOR_MESSAGES);
+            client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
             client.DropMulticastGroup(groupAddress);
             // user.deleteUser(userName);
             //  listBox1.DataSource = null;

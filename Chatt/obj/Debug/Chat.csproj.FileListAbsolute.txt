@@ -14,3 +14,4 @@ C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\obj\Debug\Chatt
 C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\obj\Debug\Chat.csproj.GenerateResource.Cache
 C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\bin\Debug\Chatt.exe
 C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\bin\Debug\Chatt.pdb
+C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\bin\Debug\Chatt.exe.config
