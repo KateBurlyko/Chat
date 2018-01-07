@@ -16,7 +16,6 @@ namespace Chat
             sendButton.Enabled = false;
             messageTextBox.Enabled = false;
             chatTextBox.ReadOnly = true;
-            listBox1.Enabled = false;
             userNameTextBox.ReadOnly = false;
         }
 
@@ -26,6 +25,7 @@ namespace Chat
             logoutButton.Enabled = true;
             sendButton.Enabled = true;
             messageTextBox.Enabled = true;
+            userNameTextBox.ReadOnly = true;
         }
     }
 }

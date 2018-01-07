@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionsWithListOfUsers.cs" />
     <Compile Include="ControllBehaviour.cs">
       <SubType>Form</SubType>
     </Compile>

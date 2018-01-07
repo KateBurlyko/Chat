@@ -1,5 +1,6 @@
-﻿using Chatt;
-using System;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -13,25 +14,27 @@ namespace Chat
         bool alive = false;
         UdpClient client;
         IPAddress groupAddress;
-
         string userName;
+        ObservableCollection<string> listOfUsers;
+        ActionsW actions;
 
         public Form1()
         {
-            //user = new Users();
             InitializeComponent();
             groupAddress = IPAddress.Parse(DataForConnection.Default.HOST);
-
+            listOfUsers = new ObservableCollection<string>();
+            listOfUsers.Add("List of active users");
             ControlsBeforeLogin();
+            listBox1.DataSource = listOfUsers;
+            listOfUsers.CollectionChanged += updatingOfUserList;
+            actions = new ActionsW();
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
             userName = userNameTextBox.Text;
-            userNameTextBox.ReadOnly = true;
             try
             {
-                //creating of channel
                 client = new UdpClient(DataForConnection.Default.CONNECTION_PORT);
                 client.JoinMulticastGroup(groupAddress, DataForConnection.Default.TTL);
 
@@ -40,13 +43,9 @@ namespace Chat
 
                 string message = userName + " intered in chat";
                 byte[] data = Encoding.Unicode.GetBytes(message);
-                //user.addUser(userName);
-                // listBox1.DataSource = null;
-                //listBox1.DataSource = user.userN;
                 client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
-
+                actions.AddOrRemoveUserFromList(message, listOfUsers);
                 ControlsAfterLogin();
-
             }
             catch (Exception ex)
             {
@@ -64,7 +63,6 @@ namespace Chat
                     IPEndPoint remoteIp = null;
                     byte[] data = client.Receive(ref remoteIp);
                     string message = Encoding.Unicode.GetString(data);
-
                     this.Invoke(new MethodInvoker(() =>
                     {
                         string time = DateTime.Now.ToShortTimeString();
@@ -107,14 +105,12 @@ namespace Chat
 
         private void ExitChat()
         {
-            string message = userName + " leved chat";
+            string message = userName + " leaved chat";
             byte[] data = Encoding.Unicode.GetBytes(message);
             client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
             client.DropMulticastGroup(groupAddress);
-            // user.deleteUser(userName);
-            //  listBox1.DataSource = null;
-            //listBox1.DataSource = user.userN;
             alive = false;
+            actions.AddOrRemoveUserFromList(message, listOfUsers);
             client.Close();
         }
 
@@ -122,6 +118,12 @@ namespace Chat
         {
             if (alive)
                 ExitChat();
+        }
+
+        private void updatingOfUserList(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            listBox1.DataSource = null;
+            listBox1.DataSource = listOfUsers;
         }
     }
 }

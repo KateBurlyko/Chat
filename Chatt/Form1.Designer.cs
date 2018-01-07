@@ -52,21 +52,24 @@ namespace Chat
             // 
             // loginButton
             // 
+            this.loginButton.BackColor = System.Drawing.Color.Yellow;
             this.loginButton.Location = new System.Drawing.Point(463, 12);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(101, 26);
             this.loginButton.TabIndex = 1;
             this.loginButton.Text = "Login";
-            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.UseVisualStyleBackColor = false;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // logoutButton
             // 
+            this.logoutButton.BackColor = System.Drawing.Color.Red;
             this.logoutButton.Location = new System.Drawing.Point(464, 44);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(100, 23);
             this.logoutButton.TabIndex = 6;
             this.logoutButton.Text = "Logout";
+            this.logoutButton.UseVisualStyleBackColor = false;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // userNameTextBox
@@ -86,6 +89,7 @@ namespace Chat
             // 
             // chatTextBox
             // 
+            this.chatTextBox.BackColor = System.Drawing.Color.Aqua;
             this.chatTextBox.Location = new System.Drawing.Point(150, 70);
             this.chatTextBox.Multiline = true;
             this.chatTextBox.Name = "chatTextBox";
@@ -94,6 +98,7 @@ namespace Chat
             // 
             // listBox1
             // 
+            this.listBox1.BackColor = System.Drawing.Color.Navy;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 70);
             this.listBox1.Name = "listBox1";
@@ -104,6 +109,7 @@ namespace Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.ClientSize = new System.Drawing.Size(584, 511);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.chatTextBox);
@@ -113,7 +119,8 @@ namespace Chat
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.sendButton);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Text = "Local Chat";
             this.ResumeLayout(false);
             this.PerformLayout();
 
