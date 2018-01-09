@@ -16,11 +16,22 @@ namespace Chat
         public MainForm()
         {
             InitializeComponent();
+            loginButton.Enabled = true;
+            logoutButton.Enabled = false;
+            sendButton.Enabled = false;
+            messageTextBox.Enabled = false;
+            chatTextBox.ReadOnly = true;
+            userNameTextBox.ReadOnly = false;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
 
+            loginButton.Enabled = false;
+            logoutButton.Enabled = true;
+            sendButton.Enabled = true;
+            messageTextBox.Enabled = true;
+            userNameTextBox.ReadOnly = true;
         }
 
         private void sendButton_Click(object sender, EventArgs e)
@@ -31,6 +42,12 @@ namespace Chat
         private void logoutButton_Click(object sender, EventArgs e)
         {
 
+            loginButton.Enabled = true;
+            logoutButton.Enabled = false;
+            sendButton.Enabled = false;
+            messageTextBox.Enabled = false;
+            chatTextBox.ReadOnly = true;
+            userNameTextBox.ReadOnly = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
