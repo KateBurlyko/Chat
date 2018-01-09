@@ -12,6 +12,7 @@ namespace Chat
         public event EventHandler<EventArgs> LogOut;
         public event EventHandler<EventArgs> Send;
 
+        private Presenter presenter;
         public MainForm()
         {
             InitializeComponent();
