@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Chat
 {
-    static class Program
+    static class MainClass
     {
         /// <summary>
         /// The main entry point for the application.
@@ -15,7 +15,7 @@ namespace Chat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainForm());
         }
     }
 }
