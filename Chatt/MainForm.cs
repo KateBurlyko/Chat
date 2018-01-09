@@ -5,13 +5,16 @@ namespace Chat
 {
     public partial class MainForm : Form
     {
-        private Presenter presenter;
+        public string UserName { get { return userNameTextBox.Text; } set { userNameTextBox.Text = value; } }
+        public string UserMessage { get { return messageTextBox.Text; } set { messageTextBox.Text = value; } }
 
+        public event EventHandler<EventArgs> LogIn;
+        public event EventHandler<EventArgs> LogOut;
+        public event EventHandler<EventArgs> Send;
 
         public MainForm()
         {
             InitializeComponent();
-            presenter = new Presenter();
         }
 
         private void loginButton_Click(object sender, EventArgs e)

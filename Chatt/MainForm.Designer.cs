@@ -123,7 +123,6 @@ namespace Chat
             this.Text = "Local Chat";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
