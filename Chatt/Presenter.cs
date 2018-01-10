@@ -7,22 +7,26 @@ namespace Chat
 {
     class Presenter
     {
-        public Presenter()
+        public Model Model { get; set; }
+        public View View { get; set; }
+
+        public Presenter(Model model, View view)
+        {
+            Model = model;
+            View = view;
+        }
+
+        private void LogIn(string name)
+        {
+            Model.UserName = name;
+        }
+
+        private void LogOut()
         {
 
         }
 
-        private void LogIn(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LogOut(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Send(object sender, EventArgs e)
+        private void Send()
         {
 
         }

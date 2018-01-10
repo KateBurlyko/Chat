@@ -8,5 +8,7 @@ namespace Chat
 {
     public class Model
     {
+        public ObservableCollection<string> ListOfUsers { get; set; }
+        public string UserName { get; set; }
     }
 }
