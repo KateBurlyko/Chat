@@ -37,12 +37,13 @@ namespace Chat
 
         private void sendButton_Click(object sender, EventArgs e)
         {
+            Send?.Invoke(messageTextBox.Text);
             messageTextBox.Clear();
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-
+            LogOut?.Invoke();
             SetEnabledState(false);
         }
 

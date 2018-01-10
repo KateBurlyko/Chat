@@ -19,6 +19,8 @@ namespace Chat
             View = view;
 
             View.LogIn += LogIn;
+            View.Send += Send;
+            View.LogOut += LogOut;
         }
 
         private void LogIn(string name)
@@ -44,12 +46,27 @@ namespace Chat
 
         private void LogOut()
         {
-           
+            if (!Model.Alive) return;
+            string message = Model.UserName + " leaved chat";
+            byte[] data = Encoding.Unicode.GetBytes(message);
+            Model.Client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
+            Model.Client.DropMulticastGroup(Model.GroupAddress);
+            Model.Alive = false;
+            Model.Client.Close();
         }
 
-        private void Send()
+        private void Send(string msg)
         {
-
+            try
+            {
+                string message = String.Format("{0}: {1}", Model.UserName, msg);
+                byte[] data = Encoding.Unicode.GetBytes(message);
+                Model.Client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ReceiveMessages()
