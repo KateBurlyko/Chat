@@ -15,7 +15,9 @@ namespace Chat
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View());
+            var view = new View();
+            var presenter = new Presenter(new Model(), view);
+            Application.Run(view);
         }
     }
 }
