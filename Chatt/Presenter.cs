@@ -21,6 +21,7 @@ namespace Chat
             View.LogIn += LogIn;
             View.Send += Send;
             View.LogOut += LogOut;
+            Model.RequireListUpdate += View.UpdateUsers;
         }
 
         private void LogIn(string name)
@@ -37,6 +38,7 @@ namespace Chat
                 string message = name + " intered in chat";
                 byte[] data = Encoding.Unicode.GetBytes(message);
                 Model.Client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
+                Model.ListOfUsers.Add(name);
             }
             catch (Exception ex)
             {
@@ -48,10 +50,12 @@ namespace Chat
         {
             if (!Model.Alive) return;
             string message = Model.UserName + " leaved chat";
+
             byte[] data = Encoding.Unicode.GetBytes(message);
             Model.Client.Send(data, data.Length, DataForConnection.Default.HOST, DataForConnection.Default.MESSAGES_PORT);
             Model.Client.DropMulticastGroup(Model.GroupAddress);
             Model.Alive = false;
+            Model.ListOfUsers.Remove(Model.UserName);
             Model.Client.Close();
         }
 
