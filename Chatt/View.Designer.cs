@@ -2,7 +2,7 @@
 
 namespace Chat
 {
-    partial class MainForm
+    partial class View
     {
         
         /// <summary>
@@ -105,7 +105,7 @@ namespace Chat
             this.listBox1.Size = new System.Drawing.Size(124, 277);
             this.listBox1.TabIndex = 9;
             // 
-            // MainForm
+            // View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -118,7 +118,7 @@ namespace Chat
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.sendButton);
-            this.Name = "MainForm";
+            this.Name = "View";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "Local Chat";
             this.ResumeLayout(false);

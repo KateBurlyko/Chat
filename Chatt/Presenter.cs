@@ -7,13 +7,9 @@ namespace Chat
 {
     class Presenter
     {
-        private MainForm mainForm;
-        private Model model;
-
-        public Presenter(MainForm mainForm)
+        public Presenter()
         {
-            model = new Model();
-            this.mainForm = mainForm;
+
         }
 
         private void LogIn(object sender, EventArgs e)

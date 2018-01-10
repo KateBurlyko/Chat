@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Net;
+using System.Net.Sockets;
 
 namespace Chat
 {
-    class Model
+    public class Model
     {
-        public List<User> ActiveUsers { get; set; }
-        public List<string> SentMessages { get; set; }
     }
 }
