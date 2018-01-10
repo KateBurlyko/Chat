@@ -14,4 +14,4 @@ C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\obj\Debug\Chat.
 C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\bin\Debug\Chatt.exe
 C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\bin\Debug\Chatt.pdb
 C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\bin\Debug\Chatt.exe.config
-C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\obj\Debug\Chat.MainForm.resources
+C:\Users\Janek\Documents\Visual Studio 2015\projects2\Chat\Chatt\obj\Debug\Chat.View.resources

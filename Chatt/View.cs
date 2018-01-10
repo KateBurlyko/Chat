@@ -9,7 +9,6 @@ namespace Chat
         public event Action<string> LogIn;
         public event Action<string> Send;
         public event Action LogOut;
-
         public View()
         {
             InitializeComponent();
@@ -32,6 +31,7 @@ namespace Chat
         }
         private void loginButton_Click(object sender, EventArgs e)
         {
+            LogIn?.Invoke(userNameTextBox.Text);
             SetEnabledState(true);
         }
 
@@ -49,6 +49,11 @@ namespace Chat
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             LogOut?.Invoke();
+        }
+
+        public void AddMessage(string message)
+        {
+            chatTextBox.Text = DateTime.Now.ToShortTimeString() + " " + message + "\r\n" + chatTextBox.Text;
         }
     }
 }
