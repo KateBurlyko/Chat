@@ -1,10 +1,7 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Chatt" GeneratedClassName="PropertyOfConnection">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Chatt" GeneratedClassName="DataForConnection">
   <Profiles />
   <Settings>
-    <Setting Name="TTL" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">20</Value>
-    </Setting>
     <Setting Name="HOST" Type="System.String" Scope="Application">
       <Value Profile="(Default)">235.166.1.4</Value>
     </Setting>
@@ -13,6 +10,9 @@
     </Setting>
     <Setting Name="MESSAGES_PORT" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">8001</Value>
+    </Setting>
+    <Setting Name="TTL" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">20</Value>
     </Setting>
   </Settings>
 </SettingsFile>

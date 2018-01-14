@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Chat {
+namespace Chatt {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,15 +20,6 @@ namespace Chat {
         public static DataForConnection Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("20")]
-        public int TTL {
-            get {
-                return ((int)(this["TTL"]));
             }
         }
         
@@ -56,6 +47,15 @@ namespace Chat {
         public int MESSAGES_PORT {
             get {
                 return ((int)(this["MESSAGES_PORT"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
+        public int TTL {
+            get {
+                return ((int)(this["TTL"]));
             }
         }
     }
